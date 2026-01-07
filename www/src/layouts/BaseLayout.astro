@@ -1,6 +1,7 @@
 ---
 import FooterLayout from "./FooterLayout.astro";
 import HeaderLayout from "./HeaderLayout.astro";
+import "../styles/global.css";
 
 type Props = {
     title: string;
@@ -21,9 +22,11 @@ const { it, language } = Astro.locals;
         <link rel="shortcut icon" href="favicon.svg" type="image/x-icon" />
         <title>{it(context.title)}</title>
     </head>
-    <body>
+    <body class="bg-background text-foreground">
         <HeaderLayout />
-        <slot />
+        <main class="mx-auto container mt-[55px] p-5">
+            <slot />
+        </main>
         <FooterLayout />
     </body>
 </html>
