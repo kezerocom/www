@@ -14,11 +14,11 @@ const { it, language } = Astro.locals;
 <!doctype html>
 <html lang={language.getCode()}>
     <head>
+        <base href="/" />
         <meta charset="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <meta name="description" content={it(context.description)} />
         <link rel="shortcut icon" href="favicon.svg" type="image/x-icon" />
-        <link rel="import" href="component.html" />
         <title>{it(context.title)}</title>
     </head>
     <body>

@@ -1,5 +1,4 @@
 import type { Language } from "./Language";
-import { getSecret } from "astro:env/server";
 
 export default class Translator {
     private readonly language: Language;

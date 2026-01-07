@@ -23,8 +23,12 @@ export function onRequest(context: APIContext, next: MiddlewareNext) {
     context.locals.isRewrited = true;
     context.locals.language = language;
     context.locals.translator = new Translator(language, import.meta.env.DEV);
-    context.locals.it = (input: string) => context.locals.translator.translate(input);
     context.locals.navigateTo = (link: string) => getNavigationTo(language, link);
+    context.locals.it = (input: string) => {
+        const translation = context.locals.translator.translate(input);
+        const result = { html: translation, toString: () => translation, valueOf: () => translation, [Symbol.toPrimitive]: () => translation };
+        return result as unknown as { html: string } & string;
+    };
 
     const pathname = getPathnameWithoutCulture(culture, context.url.pathname);
 
