@@ -1,0 +1,20 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+const { it, navigateTo, language } = Astro.locals;
+---
+
+<BaseLayout title="Home" description={"Know more about Kezero"}>
+    <h1>Hello World!</h1>
+    {/*@ts-ignore */}
+    <h2>{it("Hey")}</h2>
+    <br />
+    <a href={navigateTo("/")}>{it("Home")}</a>
+    <br />
+    <a href={navigateTo("now")}>{it("Now")}</a>
+    <br />
+    <a href={navigateTo("/now")}>{it("Now /")}</a>
+    <br />
+    <a href={navigateTo("http://kezero.com")}>{it("Site")}</a>
+
+    <h2>{language.getNativeName()}</h2>
+</BaseLayout>
